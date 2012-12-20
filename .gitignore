@@ -1,0 +1,5 @@
+.DS_Store
+Backup
+Settings/Auto Save Session.sublime_session
+Settings/License.sublime_license
+*.pyc

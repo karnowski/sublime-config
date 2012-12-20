@@ -1,0 +1,18 @@
+{
+  "theme": "Soda Dark.sublime-theme",
+  "remember_open_files": true,
+	"highlight_modified_tabs": true,
+	"close_windows_when_empty": true,
+
+  "folder_exclude_patterns": [
+  	".svn", ".git", ".hg", "CVS", ".bundle"
+  ],
+
+	"file_exclude_patterns": [
+		"*.pyc", "*.pyo", "*.exe", "*.dll", 
+		"*.obj","*.o", "*.a", "*.lib", "*.so", "*.dylib", 
+		"*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", 
+		"*.class", "*.psd", "*.db", 
+		".DS_Store", ".gitignore", ".rspec", ".rvmrc", ".vagrant"
+	]
+}

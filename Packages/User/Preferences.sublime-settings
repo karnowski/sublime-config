@@ -1,0 +1,51 @@
+{
+	"auto_indent": true,
+	"close_windows_when_empty": true,
+	"color_scheme": "Packages/Color Scheme - Default/Twilight.tmTheme",
+	"detect_indentation": true,
+	"draw_white_space": "all",
+	"file_exclude_patterns":
+	[
+		"*.pyc",
+		"*.pyo",
+		"*.exe",
+		"*.dll",
+		"*.obj",
+		"*.o",
+		"*.a",
+		"*.lib",
+		"*.so",
+		"*.dylib",
+		"*.ncb",
+		"*.sdf",
+		"*.suo",
+		"*.pdb",
+		"*.idb",
+		"*.class",
+		"*.psd",
+		"*.db",
+		".DS_Store",
+		".gitignore",
+		".rspec",
+		".rvmrc",
+		".vagrant"
+	],
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		".bundle"
+	],
+	"font_options":
+	[
+	],
+	"font_size": 19.0,
+	"highlight_modified_tabs": true,
+	"remember_open_files": true,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": false
+}

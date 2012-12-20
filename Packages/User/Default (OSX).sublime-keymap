@@ -1,0 +1,6 @@
+[
+	{ "keys": ["shift+super+t"], "command": "show_overlay", "args": {"overlay": "goto", "text": "@"} },
+	{ "keys": ["ctrl+super+r"], "command": "reveal_in_side_bar" },
+	{ "keys": ["super+l"], "command": "show_overlay", "args": {"overlay": "goto", "text": ":"} },
+  { "keys": ["super+alt+w"], "command": "toggle_word_wrap"}
+]
