@@ -4,6 +4,7 @@
 	[
 		"CoffeeScript",
 		"Git",
+		"LESS",
 		"Package Control",
 		"ToggleQuotes"
 	]
