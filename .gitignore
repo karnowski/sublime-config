@@ -4,3 +4,4 @@ Backup
 *.sublime_session
 *.sublime_license
 *.pyc
+Packages/User/FileHistory.sublime-settings
