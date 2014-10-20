@@ -3,9 +3,12 @@
 	"installed_packages":
 	[
 		"CoffeeScript",
+		"fish-shell",
 		"Git",
+		"JSONLint",
 		"LESS",
 		"Package Control",
+		"Theme - itg.flat",
 		"ToggleQuotes"
 	]
 }
