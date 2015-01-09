@@ -1,5 +1,10 @@
 {
 	"auto_upgrade_last_run": null,
+	"installed_dependencies":
+	[
+		"0_package_control_loader",
+		"bz2"
+	],
 	"installed_packages":
 	[
 		"CoffeeScript",
@@ -7,6 +12,7 @@
 		"Git",
 		"JSONLint",
 		"LESS",
+		"Markdown Extended",
 		"Package Control",
 		"Theme - itg.flat",
 		"ToggleQuotes"
