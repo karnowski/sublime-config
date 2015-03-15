@@ -1,0 +1,1 @@
+{"description": "Sublime Text package for aligning and cleaning tables", "url": "https://github.com/amisarca/Sublime-Text-Table-Cleaner", "platforms": ["*"], "version": "1.0.0", "sublime_text": "<3000", "dependencies": []}
