@@ -46,6 +46,10 @@ def to_slash(text, detectAcronyms, acronyms):
     words, case, sep = case_parse.parseVariable(text, detectAcronyms, acronyms, True)
     return '/'.join(words)
 
+def to_backslash(text, detectAcronyms, acronyms):
+    words, case, sep = case_parse.parseVariable(text, detectAcronyms, acronyms, True)
+    return '\\'.join(words)
+
 
 def to_separate_words(text, detectAcronyms, acronyms):
     words, case, sep = case_parse.parseVariable(text, detectAcronyms, acronyms, True)
@@ -80,8 +84,9 @@ def run_on_selections(view, edit, func):
         # Preserve leading and trailing whitespace
         leading = text[:len(text)-len(text.lstrip())]
         trailing = text[len(text.rstrip()):]
-        text = func(text.strip(), detectAcronyms, acronyms)
-        view.replace(edit, region, leading + text + trailing)
+        new_text = leading + func(text.strip(), detectAcronyms, acronyms) + trailing
+        if new_text != text:
+            view.replace(edit, region, new_text)
 
 
 class ToggleSnakeCamelPascalCommand(sublime_plugin.TextCommand):
@@ -122,3 +127,7 @@ class ConvertToSeparateWords(sublime_plugin.TextCommand):
 class ConvertToSlash(sublime_plugin.TextCommand):
     def run(self, edit):
         run_on_selections(self.view, edit, to_slash )
+
+class ConvertToBackSlash(sublime_plugin.TextCommand):
+    def run(self, edit):
+        run_on_selections(self.view, edit, to_backslash )

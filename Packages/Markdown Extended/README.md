@@ -108,6 +108,7 @@ Note that in order for a language to be highlighted properly, you must have the 
 * `coffee|coffeescript`
 * `coffee front matter`
 * `cpp`
+* `csharp`
 * `css`
 * `c`
 * `c++`
@@ -122,6 +123,7 @@ Note that in order for a language to be highlighted properly, you must have the 
 * `javascript|js`
 * `json`
 * `json front matter`
+* `julia`
 * `less`
 * `ls|livescript|LiveScript`
 * `lua`
@@ -229,7 +231,7 @@ See [gray-matter](https://github.com/assemble/gray-matter)
 
 
 ## Copyright and license
-Copyright 2013 Jon Schlinkert
+Copyright 2013-2015 Jon Schlinkert
 
 [MIT License](LICENSE-MIT)
 

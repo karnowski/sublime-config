@@ -118,7 +118,8 @@ class CommandThread(threading.Thread):
                 proc = subprocess.Popen(self.command,
                     stdout=self.stdout, stderr=subprocess.STDOUT,
                     stdin=subprocess.PIPE,
-                    shell=shell, universal_newlines=True)
+                    shell=shell, universal_newlines=True,
+                    env=os.environ)
                 output = proc.communicate(self.stdin)[0]
                 if not output:
                     output = ''
@@ -306,9 +307,13 @@ class GitTextCommand(GitCommand, sublime_plugin.TextCommand):
 class GitCustomCommand(GitWindowCommand):
     may_change_files = True
 
-    def run(self):
-        self.get_window().show_input_panel("Git command", "",
+    def run(self, command=None):
+        if command is None:
+            self.get_window().show_input_panel("Git command", "",
             self.on_input, None, None)
+        else:
+            self.on_input(command)
+
 
     def on_input(self, command):
         command = str(command)  # avoiding unicode
@@ -316,9 +321,11 @@ class GitCustomCommand(GitWindowCommand):
             self.panel("No git command provided")
             return
         import shlex
-        command_splitted = ['git'] + shlex.split(command)
-        print command_splitted
-        self.run_command(command_splitted)
+        cmds = [c.strip() for c in command.split(';') if c.strip() != '']
+        for cmd in cmds:
+            command_splitted = ['git'] + shlex.split(cmd)
+            print command_splitted
+            self.run_command(command_splitted)
 
 
 class GitGuiCommand(GitTextCommand):
@@ -330,4 +337,14 @@ class GitGuiCommand(GitTextCommand):
 class GitGitkCommand(GitTextCommand):
     def run(self, edit):
         command = ['gitk']
+        self.run_command(command)
+
+class GitGitkAllCommand(GitTextCommand):
+    def run(self, edit):
+        command = ['gitk', '--all']
+        self.run_command(command)
+
+class GitGitkThisFileCommand(GitTextCommand):
+    def run(self, edit):
+        command = ['gitk', self.get_file_name()]
         self.run_command(command)

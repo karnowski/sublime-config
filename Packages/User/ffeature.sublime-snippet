@@ -1,0 +1,12 @@
+<snippet>
+  <content><![CDATA[
+<!-- # Feature: FeatureName -->
+
+DRAFT #1 | 2015-03-19 | &copy;2015 Adzerk | **DO NOT DISTRIBUTE**
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>ffeature</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <!-- <scope>source.markdown</scope> -->
+</snippet>

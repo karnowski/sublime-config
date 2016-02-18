@@ -1,20 +1,25 @@
 {
 	"auto_upgrade_last_run": null,
+	"bootstrapped": true,
 	"in_process_packages":
 	[
 	],
 	"installed_packages":
 	[
+		"Case Conversion",
 		"CoffeeScript",
-		"fish-shell",
 		"Git",
-		"HTML-CSS-JS Prettify",
+		"GotoWindow",
+		"Jade",
+		"JsFormat",
 		"JSONLint",
 		"LESS",
 		"Markdown Extended",
 		"Package Control",
+		"PlainTasks",
+		"Pretty JSON",
 		"Ruby Slim",
-		"Theme - itg.flat",
+		"Table Cleaner",
 		"ToggleQuotes"
 	]
 }

@@ -41,7 +41,7 @@
 	"font_options":
 	[
 	],
-	"font_size": 21.0,
+	"font_size": 20.0,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"ignored_packages":
@@ -51,6 +51,6 @@
 	"remember_open_files": false,
 	"tab_size": 2,
 	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
+	"trim_trailing_white_space_on_save": false,
 	"word_wrap": false
 }
