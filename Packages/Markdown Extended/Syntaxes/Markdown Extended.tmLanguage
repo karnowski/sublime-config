@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>fileTypes</key>
@@ -349,6 +349,39 @@
 		</dict>
 		<dict>
 			<key>begin</key>
+			<string>(```|~~~|{%\s*highlight)\s*(erlang)\s*((?:linenos\s*)?%})?$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.fenced.markdown</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language.fenced.markdown</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.fenced.markdown</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(```|~~~|{%\s*endhighlight\s*%})\n</string>
+			<key>name</key>
+			<string>markup.raw.block.markdown markup.raw.block.fenced.markdown</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.erlang</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
 			<string>(```|~~~|{%\s*highlight)\s*(diff)\s*((?:linenos\s*)?%})?$</string>
 			<key>captures</key>
 			<dict>
@@ -447,6 +480,39 @@
 				<dict>
 					<key>include</key>
 					<string>text.html.handlebars</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(```|~~~|{%\s*highlight)\s*(ini)\s*((?:linenos\s*)?%})?$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.fenced.markdown</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language.fenced.markdown</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.fenced.markdown</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(```|~~~|{%\s*endhighlight\s*%})\n</string>
+			<key>name</key>
+			<string>markup.raw.block.markdown markup.raw.block.fenced.markdown</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.ini</string>
 				</dict>
 			</array>
 		</dict>
@@ -711,6 +777,39 @@
 				<dict>
 					<key>include</key>
 					<string>text.html.markdown</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>(```|~~~|{%\s*highlight)\s*(nginx)\s*((?:linenos\s*)?%})?$</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.fenced.markdown</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>variable.language.fenced.markdown</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.fenced.markdown</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(```|~~~|{%\s*endhighlight\s*%})\n</string>
+			<key>name</key>
+			<string>markup.raw.block.markdown markup.raw.block.fenced.markdown</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>source.nginx</string>
 				</dict>
 			</array>
 		</dict>
@@ -1802,6 +1901,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#strike</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#image-inline</string>
 				</dict>
 				<dict>
@@ -1851,27 +1954,157 @@
 		</dict>
 		<key>heading</key>
 		<dict>
-			<key>begin</key>
-			<string>\G(#{1,6})(?!#)\s*(?=\S)</string>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.heading.markdown</string>
-				</dict>
-			</dict>
-			<key>contentName</key>
-			<string>entity.name.section.markdown</string>
-			<key>end</key>
-			<string>\s*(#*)$\n?</string>
-			<key>name</key>
-			<string>markup.heading.markdown</string>
 			<key>patterns</key>
 			<array>
 				<dict>
-					<key>include</key>
-					<string>#inline</string>
+					<key>begin</key>
+					<string>\G(#{1})(?!#)\s*(?=\S)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.heading.markdown</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>markup.heading.1.markdown</string>
+					<key>end</key>
+					<string>\s*(#*)$\n?</string>
+					<key>name</key>
+					<string>markup.heading.1.markdown</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#inline</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\G(#{2})(?!#)\s*(?=\S)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.heading.markdown</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>markup.heading.2.markdown</string>
+					<key>end</key>
+					<string>\s*(#*)$\n?</string>
+					<key>name</key>
+					<string>markup.heading.2.markdown</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#inline</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\G(#{3})(?!#)\s*(?=\S)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.heading.markdown</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>markup.heading.3.markdown</string>
+					<key>end</key>
+					<string>\s*(#*)$\n?</string>
+					<key>name</key>
+					<string>markup.heading.3.markdown</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#inline</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\G(#{4})(?!#)\s*(?=\S)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.heading.markdown</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>markup.heading.4.markdown</string>
+					<key>end</key>
+					<string>\s*(#*)$\n?</string>
+					<key>name</key>
+					<string>markup.heading.4.markdown</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#inline</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\G(#{5})(?!#)\s*(?=\S)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.heading.markdown</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>markup.heading.5.markdown</string>
+					<key>end</key>
+					<string>\s*(#*)$\n?</string>
+					<key>name</key>
+					<string>markup.heading.5.markdown</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#inline</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>\G(#{6})(?!#)\s*(?=\S)</string>
+					<key>captures</key>
+					<dict>
+						<key>1</key>
+						<dict>
+							<key>name</key>
+							<string>punctuation.definition.heading.markdown</string>
+						</dict>
+					</dict>
+					<key>contentName</key>
+					<string>markup.heading.6.markdown</string>
+					<key>end</key>
+					<string>\s*(#*)$\n?</string>
+					<key>name</key>
+					<string>markup.heading.6.markdown</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>#inline</string>
+						</dict>
+					</array>
 				</dict>
 			</array>
 		</dict>
@@ -2044,6 +2277,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#strike</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#line-break</string>
 				</dict>
 				<dict>
@@ -2168,6 +2405,10 @@
 				<dict>
 					<key>include</key>
 					<string>#bold</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#strike</string>
 				</dict>
 				<dict>
 					<key>include</key>
@@ -2476,6 +2717,133 @@
 			<string>\G[ ]{,3}([-*_])([ ]{,2}\1){2,}[ \t]*$\n?</string>
 			<key>name</key>
 			<string>meta.separator.markdown</string>
+		</dict>
+		<key>strike</key>
+		<dict>
+			<key>begin</key>
+			<string>(?x)
+(~~)(?=\S)                         # Open
+(?=
+  (
+      &lt;[^&gt;]*+&gt;              # HTML tags
+    | (?&lt;raw&gt;`+)([^`]|(?!(?&lt;!`)\k&lt;raw&gt;(?!`))`)*+\k&lt;raw&gt;
+                                     # Raw
+    | \\[\\`*_{}\[\]()#.!+\-&gt;]?+  # Escapes
+    | \[
+    (
+            (?&lt;square&gt;         # Named group
+          [^\[\]\\]                  # Match most chars
+              | \\.                  # Escaped chars
+              | \[ \g&lt;square&gt;*+ \]  # Nested brackets
+            )*+
+      \]
+      (
+        (                            # Reference Link
+          [ ]?                       # Optional space
+          \[[^\]]*+\]                # Ref name
+        )
+        | (                          # Inline Link
+          \(                         # Opening paren
+            [ \t]*+                  # Optional whtiespace
+            &lt;?(.*?)&gt;?          # URL
+            [ \t]*+                  # Optional whtiespace
+            (                        # Optional Title
+              (?&lt;title&gt;['"])
+              (.*?)
+              \k&lt;title&gt;
+            )?
+          \)
+        )
+      )
+    )
+    | \1\1                        # Must be bold closer
+    | (?!(?&lt;=\S)\1).           # Everything besides
+                                  # style closer
+  )++
+  (?&lt;=\S)\1                    # Close
+)</string>
+			<key>captures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.strike.markdown</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(?&lt;=\S)(\1)((?!\1)|(?=\1\1))</string>
+			<key>name</key>
+			<string>markup.strike.markdown</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>applyEndPatternLast</key>
+					<integer>1</integer>
+					<key>begin</key>
+					<string>(?=&lt;[^&gt;]*?&gt;)</string>
+					<key>end</key>
+					<string>(?&lt;=&gt;)</string>
+					<key>patterns</key>
+					<array>
+						<dict>
+							<key>include</key>
+							<string>text.html.handlebars</string>
+						</dict>
+					</array>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#escape</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#ampersand</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#bracket</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#raw</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#bold</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#italic</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#image-inline</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#link-inline</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#link-inet</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#link-email</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#image-ref</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#link-ref-literal</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#link-ref</string>
+				</dict>
+			</array>
 		</dict>
 	</dict>
 	<key>scopeName</key>

@@ -36,6 +36,9 @@
                     "include": "#italic"
                 }, 
                 {
+                    "include": "#strike"
+                }, 
+                {
                     "include": "#image-inline"
                 }, 
                 {
@@ -220,6 +223,9 @@
                     "include": "#bold"
                 }, 
                 {
+                    "include": "#strike"
+                }, 
+                {
                     "include": "#image-inline"
                 }, 
                 {
@@ -244,6 +250,67 @@
             "captures": {
                 "1": {
                     "name": "punctuation.definition.italic.markdown"
+                }
+            }
+        }, 
+        "strike": {
+            "name": "markup.strike.markdown", 
+            "end": "(?<=\\S)(\\1)((?!\\1)|(?=\\1\\1))", 
+            "begin": "(?x)\n(~~)(?=\\S)                         # Open\n(?=\n  (\n      <[^>]*+>              # HTML tags\n    | (?<raw>`+)([^`]|(?!(?<!`)\\k<raw>(?!`))`)*+\\k<raw>\n                                     # Raw\n    | \\\\[\\\\`*_{}\\[\\]()#.!+\\->]?+  # Escapes\n    | \\[\n    (\n            (?<square>         # Named group\n          [^\\[\\]\\\\]                  # Match most chars\n              | \\\\.                  # Escaped chars\n              | \\[ \\g<square>*+ \\]  # Nested brackets\n            )*+\n      \\]\n      (\n        (                            # Reference Link\n          [ ]?                       # Optional space\n          \\[[^\\]]*+\\]                # Ref name\n        )\n        | (                          # Inline Link\n          \\(                         # Opening paren\n            [ \\t]*+                  # Optional whtiespace\n            <?(.*?)>?          # URL\n            [ \\t]*+                  # Optional whtiespace\n            (                        # Optional Title\n              (?<title>['\"])\n              (.*?)\n              \\k<title>\n            )?\n          \\)\n        )\n      )\n    )\n    | \\1\\1                        # Must be bold closer\n    | (?!(?<=\\S)\\1).           # Everything besides\n                                  # style closer\n  )++\n  (?<=\\S)\\1                    # Close\n)", 
+            "patterns": [
+                {
+                    "end": "(?<=>)", 
+                    "patterns": [
+                        {
+                            "include": "text.html.handlebars"
+                        }
+                    ], 
+                    "applyEndPatternLast": 1, 
+                    "begin": "(?=<[^>]*?>)"
+                }, 
+                {
+                    "include": "#escape"
+                }, 
+                {
+                    "include": "#ampersand"
+                }, 
+                {
+                    "include": "#bracket"
+                }, 
+                {
+                    "include": "#raw"
+                }, 
+                {
+                    "include": "#bold"
+                }, 
+                {
+                    "include": "#italic"
+                }, 
+                {
+                    "include": "#image-inline"
+                }, 
+                {
+                    "include": "#link-inline"
+                }, 
+                {
+                    "include": "#link-inet"
+                }, 
+                {
+                    "include": "#link-email"
+                }, 
+                {
+                    "include": "#image-ref"
+                }, 
+                {
+                    "include": "#link-ref-literal"
+                }, 
+                {
+                    "include": "#link-ref"
+                }
+            ], 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.strike.markdown"
                 }
             }
         }, 
@@ -284,6 +351,9 @@
                     "include": "#italic"
                 }, 
                 {
+                    "include": "#strike"
+                }, 
+                {
                     "include": "#line-break"
                 }, 
                 {
@@ -318,20 +388,110 @@
             "match": "\\G[ ]{,3}([-*_])([ ]{,2}\\1){2,}[ \\t]*$\\n?"
         }, 
         "heading": {
-            "name": "markup.heading.markdown", 
-            "end": "\\s*(#*)$\\n?", 
             "patterns": [
+                // H1
                 {
-                    "include": "#inline"
+                    "name": "markup.heading.1.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{1})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.1.markdown", // Default: entity.name.section.markdown
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H2
+                {
+                    "name": "markup.heading.2.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{2})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.2.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H3
+                {
+                    "name": "markup.heading.3.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{3})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.3.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H4
+                {
+                    "name": "markup.heading.4.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{4})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.4.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H5
+                {
+                    "name": "markup.heading.5.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{5})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.5.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
+                },
+                // H6
+                {
+                    "name": "markup.heading.6.markdown", 
+                    "end": "\\s*(#*)$\\n?", 
+                    "begin": "\\G(#{6})(?!#)\\s*(?=\\S)", 
+                    "patterns": [
+                        {
+                            "include": "#inline"
+                        }
+                    ], 
+                    "contentName": "markup.heading.6.markdown",
+                    "captures": {
+                        "1": {
+                            "name": "punctuation.definition.heading.markdown"
+                        }
+                    }
                 }
-            ], 
-            "begin": "\\G(#{1,6})(?!#)\\s*(?=\\S)", 
-            "contentName": "entity.name.section.markdown", 
-            "captures": {
-                "1": {
-                    "name": "punctuation.definition.heading.markdown"
-                }
-            }
+            ]
         }, 
         "image-ref": {
             "name": "meta.image.reference.markdown", 
@@ -685,6 +845,27 @@
         {
             "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
             "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
+            "begin": "(```|~~~|{%\\s*highlight)\\s*(erlang)\\s*((?:linenos\\s*)?%})?$", 
+            "patterns": [
+                {
+                    "include": "source.erlang"
+                }
+            ], 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }, 
+                "3": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }
+            }
+        }, 
+        {
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
             "begin": "(```|~~~|{%\\s*highlight)\\s*(diff)\\s*((?:linenos\\s*)?%})?$", 
             "patterns": [
                 {
@@ -734,6 +915,27 @@
                 }, 
                 {
                     "include": "text.html.handlebars"
+                }
+            ], 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }, 
+                "3": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }
+            }
+        }, 
+        {
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
+            "begin": "(```|~~~|{%\\s*highlight)\\s*(ini)\\s*((?:linenos\\s*)?%})?$", 
+            "patterns": [
+                {
+                    "include": "source.ini"
                 }
             ], 
             "captures": {
@@ -902,6 +1104,27 @@
             "patterns": [
                 {
                     "include": "text.html.markdown"
+                }
+            ], 
+            "captures": {
+                "1": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }, 
+                "2": {
+                    "name": "variable.language.fenced.markdown"
+                }, 
+                "3": {
+                    "name": "punctuation.definition.fenced.markdown"
+                }
+            }
+        }, 
+        {
+            "name": "markup.raw.block.markdown markup.raw.block.fenced.markdown", 
+            "end": "(```|~~~|{%\\s*endhighlight\\s*%})\\n", 
+            "begin": "(```|~~~|{%\\s*highlight)\\s*(nginx)\\s*((?:linenos\\s*)?%})?$", 
+            "patterns": [
+                {
+                    "include": "source.nginx"
                 }
             ], 
             "captures": {
