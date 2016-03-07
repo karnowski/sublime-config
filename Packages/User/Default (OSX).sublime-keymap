@@ -6,5 +6,6 @@
   { "keys": ["super+shift+r"], "command": "refresh_folder_list" },
   { "keys": ["shift+f6"], "command": "markdown_preview_select", "args": {"target": "browser"} },
   { "keys": ["super+alt+ctrl+j"], "command": "journal"},
-  { "keys": ["super+k", "super+t"], "command": "title_case"}
+  { "keys": ["super+k", "super+t"], "command": "title_case"},
+  { "keys": ["super+0"], "command": "reset_font_size"}
 ]
