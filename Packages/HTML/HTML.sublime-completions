@@ -1,5 +1,5 @@
 {
-	"scope": "text.html - source - meta.tag, punctuation.definition.tag.begin",
+	"scope": "text.disable.html - source - meta.tag, punctuation.definition.tag.begin",
 
 	"completions":
 	[
