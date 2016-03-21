@@ -1,1 +1,1 @@
-{"url": "https://bitbucket.org/hmml/jsonlint", "version": "2014.04.14.18.26.53", "description": "Sublime Text 2 and 3 plugin to mark issues in JSON files."}
+{"description": "Sublime Text 2 and 3 plugin to mark issues in JSON files.", "url": "https://bitbucket.org/hmml/jsonlint", "platforms": ["*"], "version": "2014.04.14.16.26.53", "sublime_text": "*", "dependencies": []}
