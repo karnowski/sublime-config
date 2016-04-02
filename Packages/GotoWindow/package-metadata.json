@@ -1,1 +1,1 @@
-{"description": "Sublime Text plugin to quickly switch to any open window using a keyboard command", "url": "https://github.com/ccampbell/sublime-goto-window", "platforms": ["*"], "version": "1.0.2", "sublime_text": "*", "dependencies": []}
+{"description": "Sublime Text plugin to quickly switch to any open window using a keyboard command", "url": "https://github.com/ccampbell/sublime-goto-window", "platforms": ["*"], "version": "1.0.3", "sublime_text": "*", "dependencies": []}
