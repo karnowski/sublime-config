@@ -7,7 +7,7 @@ class JournalCommand(sublime_plugin.TextCommand):
     today = datetime.today()
     placeholder_text = today.strftime("# Journal %Y-%m-%d %H:%M")
     journal_dir = home + today.strftime("/Dropbox/Documents/Adzerk/journal/%Y-%m %B")
-    new_file = journal_dir + today.strftime("/%d-%H:%M.md")
+    new_file = journal_dir + today.strftime("/%Y-%m-%d-%H:%M.md")
 
     if not os.path.exists(journal_dir):
       os.makedirs(journal_dir)
