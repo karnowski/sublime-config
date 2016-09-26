@@ -1,0 +1,15 @@
+-for(var i=0; i<10; i++) {
+ .grid-row(class="something")
+-}
+
+- var categories = [{id: 1, path:'a', name: 'lol'}, {id: 2, path:'b', name:'lal'}]
+
+- categories.forEach(function(item){
+  - var id = item.id;
+  - var url = item.path;
+  - var name = item.name;
+
+  li.slideMenu__list
+      a(class='sideMenu__menu #{currentClass}' href='#{root + url}' id='#{id}')
+          span.sideMenu__name #{name}
+- });
