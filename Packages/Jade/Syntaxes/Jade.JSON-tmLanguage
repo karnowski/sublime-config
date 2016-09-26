@@ -28,6 +28,17 @@
       ]
     },
     {
+      "begin": "<!--",
+      "end": "--\\s*>",
+      "name": "comment.unbuffered.block.jade",
+      "patterns": [
+        {
+          "match": "--",
+          "name": "invalid.illegal.comment.comment.block.jade"
+        }
+      ]
+    },
+    {
       "begin": "^(\\s*)-$",
       "end": "^(?!(\\1\\s)|\\s*$)",
       "name": "source.js",
@@ -37,8 +48,8 @@
       ]
     },
     {
-      "begin": "^(\\s*)(script)(?=[.#(\\s])((?![^\\n]*type=)|(?=[^\\n]*(text|application)/javascript))",
-      "beginCaptures": { "2": { "name": "entity.name.tag.script.jade" } },
+      "begin": "^(\\s*)(script)((\\.$)|(?=[^\\n]*(text|application)/javascript.*\\.$))",
+      "beginCaptures": { "2": { "name": "entity.name.tag.jade" } },
       "end": "^(?!(\\1\\s)|\\s*$)",
       "name": "meta.tag.other",
       "comment": "Script tag with JavaScript code.",
@@ -46,13 +57,11 @@
         {
           "begin": "\\G(?=\\()",
           "end": "$",
-          "name": "stuff.tag.script.jade",
           "patterns": [{ "include": "#tag_attributes" }]
         },
         {
           "begin": "\\G(?=[.#])",
           "end": "$",
-          "name": "stuff.tag.script.jade",
           "patterns": [{ "include": "#complete_tag" }]
         },
         { "include": "source.js" }
@@ -60,7 +69,7 @@
     },
     {
       "begin": "^(\\s*)(style)((\\.$)|(?=[.#(].*\\.$))",
-      "beginCaptures": { "2": { "name": "entity.name.tag.script.jade" } },
+      "beginCaptures": { "2": { "name": "entity.name.tag.jade" } },
       "end": "^(?!(\\1\\s)|\\s*$)",
       "name": "meta.tag.other",
       "comment": "Style tag with CSS code.",
@@ -68,56 +77,42 @@
         {
           "begin": "\\G(?=\\()",
           "end": "$",
-          "name": "stuff.tag.style.jade",
           "patterns": [{ "include": "#tag_attributes" }]
         },
         {
           "begin": "\\G(?=[.#])",
           "end": "$",
-          "name": "stuff.tag.style.jade",
           "patterns": [{ "include": "#complete_tag" }]
         },
         { "include": "source.css" }
       ]
     },
     {
-      "begin": "^(\\s*):(markdown)(?=\\(|$)$",
-      "beginCaptures": {
-        "2": { "name": "constant.language.name.markdown.filter.jade" }
-      },
-      "end": "^(?!(\\1\\s)|\\s*$)",
-      "name": "text.markdown.filter.jade",
-      "patterns": [
-        { "include": "#filter_args" },
-        { "include": "text.html.markdown" }
-      ]
-    },
-    {
-      "begin": "^(\\s*):(sass)(?=\\(|$)$",
+      "begin": "^(\\s*):(sass)(?=\\(|$)",
       "beginCaptures": { "2": { "name": "constant.language.name.sass.filter.jade" } },
       "end": "^(?!(\\1\\s)|\\s*$)",
       "name": "source.sass.filter.jade",
       "patterns": [
-        { "include": "#filter_args" },
+        { "include": "#tag_attributes" },
         { "include": "source.sass" }
       ]
     },
     {
-      "begin": "^(\\s*):(less)(?=\\(|$)$",
+      "begin": "^(\\s*):(less)(?=\\(|$)",
       "beginCaptures": { "2": { "name": "constant.language.name.less.filter.jade" } },
       "end": "^(?!(\\1\\s)|\\s*$)",
       "name": "source.less.filter.jade",
       "patterns": [
-        { "include": "#filter_args" },
+        { "include": "#tag_attributes" },
         { "include": "source.less" }
       ]
     },
     {
-      "begin": "^(\\s*):(stylus)(?=\\(|$)$",
+      "begin": "^(\\s*):(stylus)(?=\\(|$)",
       "beginCaptures": { "2": { "name": "constant.language.name.stylus.filter.jade" } },
       "end": "^(?!(\\1\\s)|\\s*$)",
       "patterns": [
-        { "include": "#filter_args" },
+        { "include": "#tag_attributes" },
         { "include": "source.stylus" }
       ]
     },
@@ -127,7 +122,7 @@
       "end": "^(?!(\\1\\s)|\\s*$)",
       "name": "source.coffeescript.filter.jade",
       "patterns": [
-        { "include": "#filter_args" },
+        { "include": "#tag_attributes" },
         { "include": "source.coffee" }
       ]
     },
@@ -135,7 +130,6 @@
       "begin": "^(\\s*)((:(?=.))|(:$))",
       "beginCaptures": { "4": { "name": "invalid.illegal.empty.generic.filter.jade" } },
       "end": "^(?!(\\1\\s)|\\s*$)",
-      "name": "text.generic.filter.jade",
       "comment": "Generic Jade filter.",
       "patterns": [
         {
@@ -148,10 +142,10 @@
               "name": "invalid.illegal.name.generic.filter.jade"
             },
             {
-              "match": "\\w",
+              "match": "[\\w-]",
               "name": "constant.language.name.generic.filter.jade"
             },
-            { "include": "#filter_args" },
+            { "include": "#tag_attributes" },
             {
               "match": "\\W",
               "name": "invalid.illegal.name.generic.filter.jade"
@@ -163,8 +157,8 @@
     {
       "begin": "^(\\s*)(?=[\\w.#].*?\\.$)(?=(?:(?:(?:(?:(?:#[\\w-]+)|(?:\\.[\\w-]+))|(?:(?:[#!]\\{[^}]*\\})|(?:\\w(?:(?:[\\w:-]+[\\w-])|(?:[\\w-]*)))))(?:(?:#[\\w-]+)|(?:\\.[\\w-]+)|(?:\\((?:[^()\\'\\\"]*(?:(?:\\'(?:[^\\']|(?:(?<!\\\\)\\\\\\'))*\\')|(?:\\\"(?:[^\\\"]|(?:(?<!\\\\)\\\\\\\"))*\\\")))*[^()]*\\))*)*)(?:(?:(?::\\s+)|(?<=\\)))(?:(?:(?:(?:#[\\w-]+)|(?:\\.[\\w-]+))|(?:(?:[#!]\\{[^}]*\\})|(?:\\w(?:(?:[\\w:-]+[\\w-])|(?:[\\w-]*)))))(?:(?:#[\\w-]+)|(?:\\.[\\w-]+)|(?:\\((?:[^()\\'\\\"]*(?:(?:\\'(?:[^\\']|(?:(?<!\\\\)\\\\\\'))*\\')|(?:\\\"(?:[^\\\"]|(?:(?<!\\\\)\\\\\\\"))*\\\")))*[^()]*\\))*)*))*)\\.$)(?:(?:(#[\\w-]+)|(\\.[\\w-]+))|((?:[#!]\\{[^}]*\\})|(?:\\w(?:(?:[\\w:-]+[\\w-])|(?:[\\w-]*)))))",
       "beginCaptures": {
-        "2": { "name": "constant.id.tag.jade" },
-        "3": { "name": "constant.language.js" },
+        "2": { "name": "entity.other.attribute-name.id.jade" },
+        "3": { "name": "entity.other.attribute-name.class.jade" },
         "4": { "name": "meta.tag.other entity.name.tag.jade" }
       },
       "end": "^(?!(\\1\\s)|\\s*$)",
@@ -239,34 +233,6 @@
     }
   ],
   "repository": {
-    "filter_args": {
-      "begin": "\\G(\\()",
-      "captures": {
-        "1": { "name": "meta.args.filter.jade" },
-        "2": { "name": "invalid.illegal.extra.args.filter.jade" }
-      },
-      "end": "(\\))(.*?$)",
-      "name": "args.filter.jade",
-      "patterns": [
-        {
-          "begin": "([^\\s(),=]+)(=?)",
-          "beginCaptures": {
-            "1": { "name": "entity.other.attribute-name.tag.jade" },
-            "2": { "name": "punctuation.separator.key-value.jade" }
-          },
-          "end": "((?=\\))|,|$)",
-          "contentName": "string.value.args.filter.jade",
-          "patterns": [{ "include": "#filter_args_paren" }]
-        }
-      ]
-    },
-    "filter_args_paren": {
-      "begin": "\\(",
-      "end": "\\)|$",
-      "patterns": [
-        { "include": "#filter_args_paren" }
-      ]
-    },
     "blocks_and_includes": {
       "captures": {
         "1": { "name": "storage.type.import.include.jade" },
@@ -279,13 +245,14 @@
     "unbuffered_code": {
       "begin": "(-|(([a-zA-Z0-9_]+)\\s+=))",
       "beginCaptures": { "3": { "name": "variable.parameter.javascript.embedded.jade" } },
-      "end": "(?=\\])|$",
+      "end": "(?=\\])|(({\\s*)?$)",
       "name": "source.js",
       "comment": "Non-buffered executable code. Ex.:",
       "comment": "- var name = 'value';",
       "comment": "name = function() {}",
       "patterns": [
         { "include": "#js_brackets" },
+        { "include": "#babel_parens" },
         { "include": "source.js" }
       ]
     },
@@ -427,12 +394,12 @@
     },
     "tag_id": {
       "match": "#[\\w-]+",
-      "name": "constant.id.tag.jade"
+      "name": "entity.other.attribute-name.id.jade"
     },
     "tag_classes": {
       "match": "\\.([^\\w-])?[\\w-]*",
       "captures": { "1": { "name": "invalid.illegal.tag.jade" } },
-      "name": "constant.language.js"
+      "name": "entity.other.attribute-name.class.jade"
     },
     "tag_attributes": {
       "begin": "(\\(\\s*)",
@@ -644,6 +611,14 @@
       "end": "\\}",
       "patterns": [
         { "include": "#js_braces" },
+        { "include": "source.js" }
+      ]
+    },
+    "babel_parens": {
+      "begin": "\\(",
+      "end": "\\)|(({\\s*)?$)",
+      "patterns": [
+        { "include": "#babel_parens" },
         { "include": "source.js" }
       ]
     }

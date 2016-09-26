@@ -8,8 +8,10 @@
 	[
 		"Case Conversion",
 		"CoffeeScript",
+		"CSScomb",
 		"Git",
 		"GotoWindow",
+		"HTML5",
 		"Jade",
 		"JsFormat",
 		"JSONLint",
@@ -20,6 +22,7 @@
 		"Pretty JSON",
 		"Ruby Slim",
 		"Table Cleaner",
-		"ToggleQuotes"
+		"ToggleQuotes",
+		"Trimmer"
 	]
 }
