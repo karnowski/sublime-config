@@ -1,1 +1,1 @@
-{"description": "A Sublime Text plug-in for cleaning up whitespace.", "url": "https://github.com/jonlabelle/Trimmer", "platforms": ["*"], "version": "1.2.0", "sublime_text": "*", "dependencies": []}
+{"description": "A Sublime Text plug-in for cleaning up whitespace.", "url": "https://github.com/jonlabelle/Trimmer", "platforms": ["*"], "version": "1.2.4", "sublime_text": "*", "dependencies": []}

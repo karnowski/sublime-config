@@ -1,1 +1,1 @@
-{"url": "https://github.com/spadgos/sublime-ToggleQuotes", "version": "2014.06.19.00.33.00", "description": "ST2 Plugin for toggling quote marks"}
+{"description": "ST2 Plugin for toggling quote marks", "url": "https://github.com/spadgos/sublime-ToggleQuotes", "platforms": ["*"], "version": "2016.12.03.16.39.55", "sublime_text": "*", "dependencies": []}

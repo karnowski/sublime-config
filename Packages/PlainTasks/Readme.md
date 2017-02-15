@@ -36,7 +36,9 @@ For more portability you can use `todolist.txt` either as a filename or as suffi
 
 ☐ You can write plain text as notes or descriptions wherever you want. Use `_` or `*` for italic and bold just like in Markdown.
 
-☐ You can add tags using **`@`** sign
+☐ You can add tags using **`@`** sign  
+You can place cursors on tags, click right mouse button and **Filter by tags under cursors**:
+pending tasks with selected tags will remain visible (and their notes and projects they belong to), but everything else will be hidden/folded; to unfold all press <kbd>⌘+k</kbd>, <kbd>⌘+j</kbd> or <kbd>⌘+k</kbd>, <kbd>⌘+0</kbd>
 
 ☐ PlainTasks comes with a simple snippet for creating separators, if you feel that your task list is becoming too long you can split it into several sections (and fold some of them) using this snippet:
 
@@ -48,7 +50,7 @@ For more portability you can use `todolist.txt` either as a filename or as suffi
 - `c`, <kbd>tab</kbd> — `@critical`;
 - `h`, <kbd>tab</kbd> — `@high`;
 - `l`, <kbd>tab</kbd> — `@low`;
-- `s`, <kbd>tab</kbd> — `@started` — press <kbd>tab</kbd> again and current date will be inserted, when you’ll complete or cancel a task with such tag, you’ll know how many time has passed since start;
+- `s`, <kbd>tab</kbd> — `@started` — press <kbd>tab</kbd> again and current date will be inserted, when you’ll complete or cancel a task with such tag, you’ll know how many time has passed since start; if you have to change done/cancelled/started time, then you can recalculate the time spent on task by pressing <kbd>tab</kbd> while cursor is placed on a tag;
 - `tg`, <kbd>tab</kbd>, <kbd>tab</kbd> work in the same manner as `s`, but inserts `@toggle(current date)` — so you can pause and resume to get more correct result when done/cancel; each toggle tag is either pause or resume depending on its place in sequence;
 - `cr`, <kbd>tab</kbd>, <kbd>tab</kbd> — `@created(current date)` (<kbd>⌘ + shift + enter</kbd> creates a new task with this tag);
 - `d`, <kbd>tab</kbd> — `@due( )`  
@@ -66,6 +68,10 @@ For more portability you can use `todolist.txt` either as a filename or as suffi
          <tr>
           <td>  <code>@due(1)</code>    </td>
           <td>  1st day of next month always    </td>
+         </tr>
+         <tr>
+          <td>  <code>@due(--1)</code>    </td>
+          <td>  1st day of current month always    </td>
          </tr>
          <tr>
           <td>  <code>@due(5)</code>    </td>
@@ -170,6 +176,7 @@ Here is a list of PlainTasks’ specific settings:
 | **cancelled_tasks_bullet**     | `✘`              | `x` `[-]`                                                               |
 | **date_format**                | `(%y-%m-%d %H:%M)` | See [strfti.me](http://www.strfti.me/) for quick reference; detailed documentation: [ST2](https://docs.python.org/2.6/library/datetime.html#strftime-and-strptime-behavior), [ST3](https://docs.python.org/3.3/library/datetime.html#strftime-and-strptime-behavior) |
 | **done_tag**                   | true             | Determines whether done tasks should gain a `@done` tag or not          |
+| **done_date**                  | true             | Determines whether done tasks should gain a date or not                 |
 | **before_tasks_bullet_margin** | 1                | Determines the number of spaces (default indent) before the task bullet |
 | **project_tag**                | true             | Postfix archived task with project tag, otherwise prefix                |
 | **archive_name**               | `Archive:`       | Make sure it is the unique project name within your todo files          |
@@ -182,6 +189,21 @@ Here is a list of PlainTasks’ specific settings:
 | **scope_past_due**             | `string.other.tag.todo.critical` | Any scope, define color for past `@due`                 |
 | **scope_due_soon**             | `string.other.tag.todo.high`     | Any scope, define color for `@due` will be soon         |
 | **scope_misformatted**         | `string.other.tag.todo.low`      | Any scope, define color for `@due` mismatch **date_format** |
+| **icon_past_due**              | `"circle"`       | Gutter icon¹                                                            |
+| **icon_due_soon**              | `"dot"`          | Gutter icon¹                                                            |
+| **icon_misformatted**          | `""`             | Gutter icon¹                                                            |
+| **icon_critical**              | `""`             | Gutter icon¹                                                            |
+| **icon_high**                  | `""`             | Gutter icon¹                                                            |
+| **icon_low**                   | `""`             | Gutter icon¹                                                            |
+| **icon_today**                 | `""`             | Gutter icon¹                                                            |
+| **show_remain_due**            | false            | In Sublime 3, show remain or overdue time under due tags                |
+| **show_calendar_on_tags**      | false            | In Sublime 3, if true, automatically show date picker when cursor is on tag (you can get date picker any time via context menu) |
+| **due_preview_offset**         | 0                | Place preview date outside of parens of `@due()`, 1 — within            |
+| **due_remain_format**          | `"{time} remaining"` | `{time}` will be replaced with actual value                         |
+| **due_overdue_format**         | `"{time} overdue"` | `{time}` will be replaced with actual value                           |
+
+<b>¹</b> Icon value can be  `"dot"`, `"circle"`, `"bookmark"`, `"cross"`, `""`, or custom relative path to existing png file,
+e.g. `"Packages/User/my-icon.png"`.
 
 ### Changing color scheme
 If you don't like colors used in bundled schemes just copy any `.hidden-tmTheme` from PlainTasks to 

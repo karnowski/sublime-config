@@ -1,0 +1,19 @@
+language: python
+
+python:
+  - "2.7"
+  - "3.3"
+
+# Recommended by Travis support:
+sudo: required
+
+# Install dependencies:
+install:
+  - pip install flake8
+
+# Run tests:
+script:
+  - flake8 .
+
+notifications:
+  email: false

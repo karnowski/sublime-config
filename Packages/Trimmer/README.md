@@ -1,7 +1,7 @@
 Trimmer
 =======
 
-[![Downloads](https://packagecontrol.herokuapp.com/downloads/Trimmer.svg?color=80d4cd)](https://packagecontrol.io/packages/Trimmer)
+[![Build Status](https://travis-ci.org/jonlabelle/Trimmer.svg?branch=master)](https://travis-ci.org/jonlabelle/Trimmer) [![Downloads](https://packagecontrol.herokuapp.com/downloads/Trimmer.svg?color=80d4cd)](https://packagecontrol.io/packages/Trimmer)
 
 [Trimmer](https://jonlabelle.github.io/Trimmer/) is a [Sublime Text](http://www.sublimetext.com) plug-in for cleaning up whitespace.
 
@@ -17,6 +17,7 @@ Trimmer
 - Remove blank space characters.
 - Normalize spaces (consecutive spaces reduced, empty lines removed and lines trimmed).
 - Tokenize a string by collapsing consecutive spaces, and trimming leading and trailing spaces.
+- Delete empty, whitespace only HTML and XML tags.
 
 ## Additional Features
 
@@ -115,6 +116,7 @@ line (entire file).
 | `normalize_spaces`                 | consecutive spaces reduced, empty lines removed and lines trimmed                                      | selection, or entire file |
 | `replace_smart_characters`         | replace smart characters (smart quotes, em/en dash, ellipsis, nbsp)                                    | selection, or entire file |
 | `tokenize_string`                  | convert a string to a token by collapsing consecutive spaces, and trimming leading and trailing spaces | selection, or entire file |
+| `delete_empty_tags`                | delete empty, whitespace only html and xml tags                                                        | selection, or entire file |
 
 ## Author
 
