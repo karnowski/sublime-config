@@ -502,6 +502,26 @@ contexts:
             3: punctuation.definition.fenced.markdown
           pop: true
         - include: scope:source.ruby
+    - match: '(```|~~~|{%\s*highlight)\s*(rails|erb|html\+ruby)\s*((?:linenos\s*)?%})?$'
+      captures:
+        1: punctuation.definition.fenced.markdown
+        2: variable.language.fenced.markdown
+        3: punctuation.definition.fenced.markdown
+      push:
+        - meta_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+        - match: '(```|~~~|{%\s*endhighlight\s*%})\n'
+          captures:
+            1: punctuation.definition.fenced.markdown
+            2: variable.language.fenced.markdown
+            3: punctuation.definition.fenced.markdown
+          pop: true
+        - match: ''
+          push:
+            - meta_content_scope: text.html.ruby
+            - include: scope:text.html.ruby
+          with_prototype:
+            - match: '(?=(```|~~~|{%\s*endhighlight\s*%})\n)'
+              pop: true
     - match: '(```|~~~|{%\s*highlight)\s*(rust)\s*((?:linenos\s*)?%})?$'
       captures:
         1: punctuation.definition.fenced.markdown
@@ -763,6 +783,7 @@ contexts:
           scope: markup.heading.2.markdown
           captures:
             1: punctuation.definition.heading.markdown
+    - include: latex-display
   html_comment:
     - match: <!--
       captures:
@@ -1029,6 +1050,7 @@ contexts:
     - include: image-ref
     - include: link-ref-literal
     - include: link-ref
+    - include: latex-inline
   italic:
     - match: |-
         (?x)
@@ -1173,6 +1195,10 @@ contexts:
         - meta_scope: meta.paragraph.list.markdown
         - match: ^\s*$
           pop: true
+        - match: '^\s{0,4}([*+-]|([0-9]+)\.)(?=\s)'
+          captures: 
+            1: punctuation.definition.list_item.markdown
+            2: punctuation.definition.list_item.number.markdown
         - include: inline
   raw:
     - match: '(`+)([^`]|(?!(?<!`)\1(?!`))`)*+(\1)'
@@ -1252,3 +1278,19 @@ contexts:
         - include: image-ref
         - include: link-ref-literal
         - include: link-ref
+
+  latex-inline:
+    - match: '(?=\$)'
+      push:
+        - meta_scope: text.tex.latex
+        - match: '(?<=\$)'
+          pop: true
+        - include: scope:text.tex.latex
+
+  latex-display:
+    - match: '(?=\$\$)'
+      push:
+        - meta_scope: text.tex.latex
+        - match: '(?<=\$\$)'
+          pop: true
+        - include: scope:text.tex.latex

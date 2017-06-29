@@ -1,19 +1,19 @@
-Trimmer
-=======
+# Trimmer
 
-[![Build Status](https://travis-ci.org/jonlabelle/Trimmer.svg?branch=master)](https://travis-ci.org/jonlabelle/Trimmer) [![Downloads](https://packagecontrol.herokuapp.com/downloads/Trimmer.svg?color=80d4cd)](https://packagecontrol.io/packages/Trimmer)
+[![Build Status](https://travis-ci.org/jonlabelle/Trimmer.svg?branch=master)](https://travis-ci.org/jonlabelle/Trimmer) [![Build status](https://ci.appveyor.com/api/projects/status/fdcdvfsip9d9efg3?svg=true)](https://ci.appveyor.com/project/jonlabelle/trimmer) [![Downloads](https://packagecontrol.herokuapp.com/downloads/Trimmer.svg?color=80d4cd)](https://packagecontrol.io/packages/Trimmer)
 
-[Trimmer](https://jonlabelle.github.io/Trimmer/) is a [Sublime Text](http://www.sublimetext.com) plug-in for cleaning up whitespace.
+[Trimmer](https://github.com/jonlabelle/Trimmer) is a [Sublime Text](http://www.sublimetext.com) plug-in for cleaning up whitespace.
 
 ## Features
 
 - Trim whitespace at the end of each line.
 - Trim whitespace at the start of each line.
 - Trim whitespace at the start and end of each line.
+- Trim whitespace from selection(s).
 - Delete empty, whitespace only lines.
 - Collapse multiple consecutive empty lines into one empty line.
 - Collapse multiple consecutive spaces into one space.
-- Trim empty, whitespace only lines at the beginning and end of the file.
+- Trim empty, whitespace only lines at the beginning and end of file.
 - Remove blank space characters.
 - Normalize spaces (consecutive spaces reduced, empty lines removed and lines trimmed).
 - Tokenize a string by collapsing consecutive spaces, and trimming leading and trailing spaces.
@@ -39,9 +39,9 @@ A **Replace Smart Characters** command that performs the following actions:
 * **Left angle quote**: `«` *to* `<<`
 * **Right angle quote**: `»` *to* `>>`
 
-![ScreenShot](https://raw.githubusercontent.com/jonlabelle/Trimmer/gh-pages/images/trimmer_ss_cmd_palette.png)
+![ScreenShot](https://raw.githubusercontent.com/jonlabelle/Trimmer/master/screenshots/command_palette.png)
 
-Watch a [**Quick Demo**](https://raw.githubusercontent.com/jonlabelle/Trimmer/gh-pages/images/trimmer_demo.gif)
+Watch a [**Quick Demo**](https://raw.githubusercontent.com/jonlabelle/Trimmer/master/screenshots/demo.gif)
 
 ## Install
 
@@ -89,8 +89,8 @@ Sublime Text packages directory.
 All commands are accessible from the **Command Palette** using prefix
 ***Trimmer***, and in the **Main Menu** under `Edit` -> `Line` -> *Trimmer* command.
 
-- [Command Palette screenshot](https://raw.githubusercontent.com/jonlabelle/Trimmer/gh-pages/images/trimmer_ss_cmd_palette.png)
-- [Main Menu screenshot](https://raw.githubusercontent.com/jonlabelle/Trimmer/gh-pages/images/trimmer_ss_main_menu.png)
+- [Command Palette screenshot](https://raw.githubusercontent.com/jonlabelle/Trimmer/master/screenshots/command_palette.png)
+- [Main Menu screenshot](https://raw.githubusercontent.com/jonlabelle/Trimmer/master/screenshots/main_menu.png)
 
 ### Key Bindings
 
@@ -108,6 +108,7 @@ line (entire file).
 | `trimmer`                          | trim whitespace at the end of each line                                                                | entire file               |
 | `trim_leading_whitespace`          | trim whitespace at the start of each line                                                              | selection, or entire file |
 | `trim_leading_trailing_whitespace` | trim whitespace at the start and end of each line                                                      | selection, or entire file |
+| `trim_selections`                  | trim whitespace from selection(s)                                                                      | selection                 |
 | `delete_empty_lines`               | delete empty, whitespace only lines                                                                    | selection, or entire file |
 | `collapse_lines`                   | collapse multiple consecutive empty lines into one empty line                                          | selection, or entire file |
 | `collapse_spaces`                  | collapse multiple consecutive spaces into one space                                                    | selection, or entire file |
