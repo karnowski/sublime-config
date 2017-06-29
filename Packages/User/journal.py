@@ -5,7 +5,7 @@ class JournalCommand(sublime_plugin.TextCommand):
   def run(self, edit):
     home = os.environ["HOME"]
     today = datetime.today()
-    placeholder_text = today.strftime("# Journal %Y-%m-%d %H:%M")
+    placeholder_text = today.strftime("# Journal : %Y-%m-%d %H:%M")
     journal_dir = home + today.strftime("/Dropbox/Documents/Adzerk/journal/%Y-%m %B")
     new_file = journal_dir + today.strftime("/%Y-%m-%d-%H:%M.md")
 
