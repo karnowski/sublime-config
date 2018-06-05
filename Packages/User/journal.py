@@ -16,4 +16,7 @@ class JournalCommand(sublime_plugin.TextCommand):
     f.write(placeholder_text + '\n\n')
     f.close()
 
+    os.system("cd /Dropbox/Documents/Adzerk/journal; git add .")
+    os.system("cd /Dropbox/Documents/Adzerk/journal; git commit -m \"update\"")
+
     self.view.window().open_file(new_file)
