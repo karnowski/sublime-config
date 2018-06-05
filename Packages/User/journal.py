@@ -17,6 +17,6 @@ class JournalCommand(sublime_plugin.TextCommand):
     f.close()
 
     os.system("cd /Dropbox/Documents/Adzerk/journal; git add .")
-    os.system("cd /Dropbox/Documents/Adzerk/journal; git commit -m \"update\"")
+    os.system("cd /Dropbox/Documents/Adzerk/journal; git commit -m \"update via custom sublime journal command\"")
 
     self.view.window().open_file(new_file)
