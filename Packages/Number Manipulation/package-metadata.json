@@ -1,0 +1,1 @@
+{"description": "manipulate multiple numbers in the document. Useful for writing .md files, snippets etc.", "url": "https://github.com/prongs/SublimeNumberManipulation", "platforms": ["*"], "version": "2015.05.07.06.09.13", "sublime_text": "<3000", "dependencies": []}

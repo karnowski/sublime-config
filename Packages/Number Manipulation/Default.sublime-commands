@@ -1,0 +1,63 @@
+[
+	{
+		"caption": "Select Next Number",
+		"command": "select_next_number"
+	},
+	{
+		"caption": "Increment Numbers",		
+		"command": "modify_numbers",
+		"args": {
+		"args":{
+			"modifier_name" : "increment"
+			}
+		}
+	},
+	{
+		"caption": "Decrement Numbers",
+		"command": "modify_numbers",
+		"args": {
+		"args":{
+			"modifier_name" : "decrement"
+			}
+		}
+	},
+	{
+		"caption": "Double Numbers",
+		"command": "modify_numbers",
+		"args": {
+		"args":{
+			"modifier_name" : "double"
+			}
+		}
+	},
+	{
+		"caption": "Square Numbers",
+		"command": "modify_numbers",
+		"args": {
+		"args":{
+			"modifier_name" : "squared"
+			}
+		}
+	},
+	{
+		"caption": "Number Sequence",
+		"command": "modify_numbers",
+		"args": {
+		"args":{
+			"modifier_name" : "sequence"
+			}
+		}
+	},
+	{
+		"caption": "Batch Number Manipulation",
+		"command": "batch_modify_numbers"
+	},
+	{
+		"caption": "Accumulate Selected Number(s)",
+		"command": "accumulate_numbers"
+	},
+	{
+		"caption": "Sum Up Selected Number(s)",
+		"command": "sum_all_numbers"
+	}
+]
