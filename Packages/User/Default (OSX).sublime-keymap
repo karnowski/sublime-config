@@ -8,6 +8,7 @@
   { "keys": ["super+alt+ctrl+j"], "command": "journal"},
   { "keys": ["super+k", "super+t"], "command": "title_case"},
   { "keys": ["super+0"], "command": "reset_font_size"},
+  { "keys": ["shift+alt+p"], "command": "goto_tab"},
 
  // Auto-pair backticks
  { "keys": ["`"], "command": "insert_snippet", "args": {"contents": "`$0`"}, "context":

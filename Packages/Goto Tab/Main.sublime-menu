@@ -1,0 +1,38 @@
+[
+	{
+		"caption": "Goto",
+		"mnemonic": "G",
+		"id": "goto",
+		"children":
+		[
+				{ "command": "goto_tab", "caption": "Goto Tab" }
+		]
+	},
+	{
+		"caption" : "Preferences",
+		"id" : "preferences",
+		"mnemonic": "n",
+		"children" : 
+		[
+			{
+				"caption" : "Package Settings",
+				"id" : "package-settings",
+				"mnemonic": "P",
+				"children" :
+				[
+					{
+						"caption" :  "GotoTab",
+						"children" : 
+						[
+							{
+								"command" : "open_file",
+								"args" : { "file" : "${packages}/User/goto_tab.sublime-settings"},
+								"caption" : "Settings - User"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+]

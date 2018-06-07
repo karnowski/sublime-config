@@ -1,0 +1,6 @@
+[
+	{
+		"caption": "Goto Tab",
+		"command": "goto_tab"
+	}
+]

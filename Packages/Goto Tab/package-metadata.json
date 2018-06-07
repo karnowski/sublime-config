@@ -1,0 +1,1 @@
+{"description": "Listing and searching open tabs just like Goto Anything", "url": "https://github.com/freewizard/SublimeGotoTab", "platforms": ["*"], "version": "1.0.0", "sublime_text": "<3000", "dependencies": []}

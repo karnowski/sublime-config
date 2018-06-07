@@ -52,7 +52,7 @@ patterns:
   end: ^(?!(\1\s)|\s*$)
   name: text.markdown.filter.slim
   patterns:
-  - include: source.md
+  - include: text.html.markdown
 
 - begin: ^(\s*)(css):$
   beginCaptures:
@@ -107,16 +107,10 @@ patterns:
 
 - begin: ^(\s*)(/)\s*.*$
   beginCaptures:
-    '1':
-      name: punctuation.section.comment.slim
-  end: ^(?!\1  )
+    '2':
+      name: comment.line.slash.slim
+  end: ^(?!(\1\s)|\s*$)
   name: comment.block.slim
-
-- captures:
-    '1':
-      name: punctuation.section.comment.slim
-  match: ^\s*(/)\s*\S.*$\n?
-  name: comment.line.slash.slim
 
 - begin: ^\s*(?=-)
   end: $
@@ -131,8 +125,15 @@ patterns:
 - include: '#tag-attribute'
 - include: '#embedded-ruby'
 
-- begin: ^\s*(\.|#|[a-zA-Z0-9]+)([\w-]+)?
-  end: $|(?!\.|#|=|:|-|~|/|\}|\]|\*|\s?[\*\{])
+- begin: ^(\s*)(\||')\s*
+  end: ^(?!(\1\s)|\s*$)
+  comment: Verbatim text (can include HTML tags and copied lines)
+  patterns:
+  - include: text.html.basic
+  - include: '#embedded-ruby'
+
+- begin: ^\s*(\.|#|[-a-zA-Z0-9]+)([\w-]+)?
+  end: $|(?!\.|#|:|-|~|/|\}|\]|\*|\s?[\*\{])
   name: meta.tag
   comment: 1 - dot OR hash OR any combination of word, number; 2 - OPTIONAL any combination of word, number, dash or underscore (following a . or #)
   captures:
@@ -247,11 +248,14 @@ repository:
     end: \s|\w$
     name: source.ruby.embedded.html
   tag-attribute:
-    begin: ([\w.#_-]+)=(?!\s)(true|false|nil)?(\s*\(|\{)?
+    begin: ([\w.#_-]+)(=)(?!\s)(true|false|nil)?(\s*\(|\{)?
+    name: meta.attribute-with-value.slim
     captures:
       '1':
         name: entity.other.attribute-name.event.slim
       '2':
+        name: punctuation.separator.key-value.html
+      '3':
         name: constant.language.slim
     end: \}|\)|$
     patterns:
@@ -261,7 +265,11 @@ repository:
   rubyline:
     begin: (==|=)(<>|><|<'|'<|<|>)?|-
     contentName: source.ruby.embedded.slim
-    end: (?<!\\|,|,\n|\\\n)$
+    end: (do\s*\n$)|(?<!\\|,|,\n|\\\n)$
+    comment: Hack to thwart Sublime's Ruby highlighter. It thinks do without a variable continues the next line (this can be muted with a / at the end of the line). For things like yields, do is unnecessary without an argument, so this hack will suffice
+    endCaptures:
+      '1':
+        name: keyword.control.start-block.ruby
     name: meta.line.ruby.slim
     patterns:
     - comment: Hack to let ruby comments work in this context properly

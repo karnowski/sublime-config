@@ -1,13 +1,18 @@
-environment:
+build: off
+deploy: off
+version: '{build}'
+clone_depth: 3
+shallow_clone: true
+pull_requests:
+  do_not_increment_build_number: true
 
+environment:
   matrix:
-    - PYTHON: "C:\\Python27"
-    - PYTHON: "C:\\Python33"
+    - PYTHON: C:\Python27
+    - PYTHON: C:\Python33
 
 install:
-  - "install.cmd %PYTHON%"
-
-build: off
+  - scripts\install.cmd %PYTHON%
 
 test_script:
-  - "run_tests.cmd %PYTHON%"
+  - scripts\run_tests.cmd %PYTHON%

@@ -6,17 +6,15 @@ class JournalCommand(sublime_plugin.TextCommand):
     home = os.environ["HOME"]
     today = datetime.today()
     placeholder_text = today.strftime("# Journal : %Y-%m-%d %H:%M")
-    journal_dir = home + today.strftime("/Dropbox/Documents/Adzerk/journal/%Y-%m %B")
-    new_file = journal_dir + today.strftime("/%Y-%m-%d-%H:%M.md")
+    journal_dir = home + "/Dropbox/Documents/Adzerk/journal"
+    month_dir = journal_dir + today.strftime("/%Y-%m %B")
+    new_file = month_dir + today.strftime("/%Y-%m-%d-%H:%M.md")
 
-    if not os.path.exists(journal_dir):
-      os.makedirs(journal_dir)
+    if not os.path.exists(month_dir):
+      os.makedirs(month_dir)
 
     f = open(new_file,'w')
     f.write(placeholder_text + '\n\n')
     f.close()
-
-    os.system("cd /Dropbox/Documents/Adzerk/journal; git add .")
-    os.system("cd /Dropbox/Documents/Adzerk/journal; git commit -m \"update via custom sublime journal command\"")
 
     self.view.window().open_file(new_file)

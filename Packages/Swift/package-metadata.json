@@ -1,0 +1,1 @@
+{"description": "A Sublime Text package for the Swift programming language", "url": "https://github.com/quiqueg/Swift-Sublime-Package", "platforms": ["*"], "version": "0.0.9", "sublime_text": "*", "dependencies": []}
